@@ -1,0 +1,12 @@
+.bookItem {
+  &__tags {
+    span {
+      margin-right: 0.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+      margin: 0.75rem 0;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<div class="bookItem">
+  <div class="card">
+    <div class="card-image"
+         *ngIf="book.imagePath"
+    >
+      <figure class="image is-4by3">
+        <img [src]="imagePath"
+             alt="Placeholder image"
+        >
+      </figure>
+    </div>
+    <div class="card-content">
+      <p class="title">
+        {{ book.title }}
+      </p>
+      <div *ngIf="book.authors.length > 0"
+           class="bookItem__authors bookItem__tags"
+      >
+        <div class="subtitle">Authors</div>
+        <span class="tag is-light"
+              *ngFor="let author of book.authors"
+        >
+          {{ author.name }}
+        </span>
+      </div>
+      <div *ngIf="book.genres.length > 0"
+           class="bookItem__genres bookItem__tags"
+      >
+        <div class="subtitle">Genres</div>
+        <span class="tag is-dark"
+              *ngFor="let genre of book.genres"
+        >
+          {{ genre.name }}
+        </span>
+      </div>
+    </div>
+    <footer class="card-footer">
+      <a href="javascript:void(0);"
+         class="card-footer-item"
+      >Details</a>
+      <a href="javascript:void(0);"
+         class="card-footer-item"
+      >Add to cart</a>
+    </footer>
+  </div>
+</div>

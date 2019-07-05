@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IndexPageComponent } from './index-page.component';
+import { ShopPageComponent } from './shop-page.component';
 
-describe('IndexPageComponent', () => {
-  let component: IndexPageComponent;
-  let fixture: ComponentFixture<IndexPageComponent>;
+describe('ShopPageComponent', () => {
+  let component: ShopPageComponent;
+  let fixture: ComponentFixture<ShopPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ IndexPageComponent ]
+      declarations: [ShopPageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(IndexPageComponent);
+    fixture = TestBed.createComponent(ShopPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
