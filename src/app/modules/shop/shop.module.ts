@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { shopRoutes } from './routes/routes';
+import { SharedModule } from '../../shared/shared.module';
 import { ShopPageComponent } from './pages/shop-page/shop-page.component';
 import { BookItemComponent } from './components/book-item/book-item.component';
-import { SharedModule } from '../shared/shared.module';
+import { ShopRoutingModule } from './shop-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,8 +12,8 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(shopRoutes),
-    SharedModule
+    SharedModule,
+    ShopRoutingModule
   ]
 })
 export class ShopModule {

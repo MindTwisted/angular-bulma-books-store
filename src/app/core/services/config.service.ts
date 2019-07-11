@@ -9,5 +9,6 @@ export class ConfigService {
     books: this.baseUrl + 'api/books'
   };
 
-  constructor() { }
+  constructor() {
+  }
 }

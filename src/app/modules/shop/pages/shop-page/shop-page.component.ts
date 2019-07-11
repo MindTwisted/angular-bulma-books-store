@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from '../../../../services/book.service';
+import { BookService } from '../../../../core/services/book.service';
 
 @Component({
   selector: 'app-shop-page',
@@ -8,7 +8,7 @@ import { BookService } from '../../../../services/book.service';
 })
 export class ShopPageComponent implements OnInit {
 
-  constructor(private bookService: BookService) {
+  constructor(public bookService: BookService) {
   }
 
   ngOnInit() {

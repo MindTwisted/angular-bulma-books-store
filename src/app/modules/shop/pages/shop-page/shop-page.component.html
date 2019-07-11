@@ -1,11 +1,18 @@
 <div class="container is-fluid">
   <app-page-title text="Shop"></app-page-title>
 
-  <div class="columns is-multiline">
+  <div class="columns is-multiline"
+       *ngIf="bookService.books.length else emptyBooks"
+  >
     <div class="column is-one-quarter-fullhd is-one-third-widescreen is-half-tablet"
          *ngFor="let book of bookService.books"
     >
       <app-book-item [book]="book"></app-book-item>
     </div>
   </div>
+  <ng-template #emptyBooks>
+    <div class="has-text-centered">
+      There are no books yet.
+    </div>
+  </ng-template>
 </div>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import Book from '../../../../models/Book';
-import { ConfigService } from '../../../../services/config.service';
+import { ConfigService } from '../../../../core/services/config.service';
+import Book from '../../../../shared/models/Book';
 
 @Component({
   selector: 'app-book-item',
