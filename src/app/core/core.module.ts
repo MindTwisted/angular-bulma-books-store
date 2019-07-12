@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
 
 @NgModule({
   declarations: [
     NavigationBarComponent,
-    LoaderComponent
+    LoaderComponent,
+    ScrollTopComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { AppRoutingModule } from '../app-routing.module';
   ],
   exports: [
     NavigationBarComponent,
-    LoaderComponent
+    LoaderComponent,
+    ScrollTopComponent
   ]
 })
 export class CoreModule { }

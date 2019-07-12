@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+// Bulma CSS framework
 @import "~bulma/sass/utilities/all";
 @import "~bulma/sass/grid/all";
 @import "~bulma/sass/base/all";
@@ -7,3 +7,5 @@
 @import "~bulma/sass/components/level";
 @import "~bulma/sass/components/navbar";
 @import "~bulma/sass/components/card";
+// FontAwesome icons pack
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
