@@ -2,14 +2,14 @@ import Author from './Author';
 import Genre from './Genre';
 
 class Book {
-  _id: string;
-  title: string;
-  description: string;
-  discount: number;
-  price: number;
-  imagePath: string;
-  authors: Author[];
-  genres: Genre[];
+  public _id: string;
+  public title: string;
+  public description: string;
+  public discount: number;
+  public price: number;
+  public imagePath: string;
+  public authors: Author[];
+  public genres: Genre[];
 }
 
 export default Book;

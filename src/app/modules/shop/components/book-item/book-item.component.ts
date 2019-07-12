@@ -9,12 +9,12 @@ import Book from '../../../../shared/models/Book';
 })
 export class BookItemComponent implements OnInit {
 
-  @Input() book: Book;
+  @Input() public book: Book;
 
   constructor(private configService: ConfigService) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
   get imagePath() {

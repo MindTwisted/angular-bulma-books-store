@@ -22,7 +22,7 @@ export class BookService {
   constructor(private http: HttpClient, private configService: ConfigService, private loaderService: LoaderService) {
   }
 
-  fetch() {
+  public fetch() {
     this.loaderService.isLoading = true;
 
     this.http.get(this.configService.urls.books)

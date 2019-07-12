@@ -10,7 +10,7 @@ export class AppComponent implements AfterViewChecked {
   constructor(public loaderService: LoaderService, private changeDetectorRef: ChangeDetectorRef) {
   }
 
-  ngAfterViewChecked(): void {
+  public ngAfterViewChecked(): void {
     this.changeDetectorRef.detectChanges();
   }
 }

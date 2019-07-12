@@ -7,22 +7,21 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class ScrollTopComponent implements OnInit, OnDestroy {
 
-  isVisible = false;
+  public isVisible = false;
+  private handleScroll = e => this.isVisible = e.pageY > 500;
 
   constructor() {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     window.addEventListener('scroll', this.handleScroll);
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll = e => this.isVisible = e.pageY > 500;
-
-  scrollTop(): void {
+  public scrollTop(): void {
     window.scrollTo({
       top: 0,
       left: 0,

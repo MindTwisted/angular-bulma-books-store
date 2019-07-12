@@ -11,7 +11,7 @@ export class ShopPageComponent implements OnInit {
   constructor(public bookService: BookService) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.bookService.fetch();
   }
 

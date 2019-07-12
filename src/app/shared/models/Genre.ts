@@ -1,6 +1,6 @@
 class Genre {
-  _id: string;
-  name: string;
+  public _id: string;
+  public name: string;
 }
 
 export default Genre;

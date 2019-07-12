@@ -7,12 +7,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PageTitleComponent implements OnInit {
 
-  @Input() text: string;
+  @Input() public text: string;
 
   constructor() {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
 }
