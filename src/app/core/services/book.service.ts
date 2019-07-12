@@ -9,15 +9,7 @@ import Book from '../../shared/models/Book';
   providedIn: 'root'
 })
 export class BookService {
-  private _books: Book[] = [];
-
-  get books(): Book[] {
-    return this._books;
-  }
-
-  set books(value: Book[]) {
-    this._books = value;
-  }
+  public books: Book[] = [];
 
   constructor(private http: HttpClient, private configService: ConfigService, private loaderService: LoaderService) {
   }
