@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service';
-import { LoaderService } from './loader.service';
-import ServerResponse from '../../shared/models/ServerResponse';
+import { ApiClientService } from './api-client.service';
 import Book from '../../shared/models/Book';
 
 @Injectable({
@@ -11,17 +9,10 @@ import Book from '../../shared/models/Book';
 export class BookService {
   public books: Book[] = [];
 
-  constructor(private http: HttpClient, private configService: ConfigService, private loaderService: LoaderService) {
+  constructor(private apiClient: ApiClientService, private configService: ConfigService) {
   }
 
   public fetch() {
-    this.loaderService.isLoading = true;
-
-    this.http.get(this.configService.urls.books)
-      .subscribe((response: ServerResponse) => {
-        this.books = response.data.books;
-
-        this.loaderService.isLoading = false;
-      });
+    return this.apiClient.get(this.configService.urls.books);
   }
 }
