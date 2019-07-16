@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../../../core/services/book.service';
 import { LoaderService } from '../../../../core/services/loader.service';
-import ServerResponse from '../../../../shared/models/ServerResponse';
+import Book from '../../../../shared/models/Book';
 
 @Component({
   selector: 'app-shop-page',
@@ -18,8 +18,8 @@ export class ShopPageComponent implements OnInit {
 
     this.bookService.fetch()
       .subscribe(
-        (response: ServerResponse) => {
-          this.bookService.books = response.data.books;
+        (books: Book[]) => {
+          this.bookService.books = books;
           this.loaderService.isLoading = false;
         },
         () => {
