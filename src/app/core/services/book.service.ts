@@ -26,7 +26,8 @@ export class BookService {
               book.description,
               book.discount,
               book.price,
-              book.imagePath,
+              book.image,
+              this.configService.apiUrl + book.imagePath,
               book.authors.map(author => new Author(author._id, author.name)),
               book.genres.map(genre => new Genre(genre._id, genre.name))
             );

@@ -8,6 +8,7 @@ class Book {
     public description: string,
     public discount: number,
     public price: number,
+    public image: any,
     public imagePath: string,
     public authors: Author[],
     public genres: Genre[],
