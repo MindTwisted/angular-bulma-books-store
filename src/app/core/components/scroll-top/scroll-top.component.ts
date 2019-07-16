@@ -8,7 +8,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 export class ScrollTopComponent implements OnInit, OnDestroy {
 
   public isVisible = false;
-  private handleScroll = e => this.isVisible = e.pageY > 500;
+
+  private handleScroll = () => this.isVisible = window.scrollY > 500;
 
   constructor() {
   }
