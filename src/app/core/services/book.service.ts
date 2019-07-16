@@ -11,7 +11,6 @@ import Genre from '../../shared/models/Genre';
   providedIn: 'root'
 })
 export class BookService {
-  public books: Book[] = [];
 
   constructor(private apiClient: ApiClientService, private configService: ConfigService) {
   }
