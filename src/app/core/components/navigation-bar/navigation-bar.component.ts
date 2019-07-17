@@ -7,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
+  private isMobileMenuActive = false;
+
   constructor() {
   }
 
   public ngOnInit() {
+  }
+
+  public handleActivateMenu() {
+    this.isMobileMenuActive = !this.isMobileMenuActive;
+  }
+
+  public handleNavigation() {
+    this.isMobileMenuActive = false;
+
+    window.scrollTo({
+      top: 0,
+      left: 0
+    });
   }
 
 }

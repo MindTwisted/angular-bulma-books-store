@@ -1,4 +1,4 @@
-<nav class="navbar is-dark"
+<nav class="navbar is-dark is-fixed-top"
      role="navigation"
      aria-label="main navigation"
 >
@@ -12,9 +12,11 @@
 
     <a role="button"
        class="navbar-burger burger"
+       [class.is-active]="isMobileMenuActive"
        aria-label="menu"
        aria-expanded="false"
        data-target="mainNavbar"
+       (click)="handleActivateMenu()"
     >
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -24,12 +26,14 @@
 
   <div id="mainNavbar"
        class="navbar-menu"
+       [class.is-active]="isMobileMenuActive"
   >
     <div class="navbar-start">
       <a class="navbar-item"
          routerLink="/"
          routerLinkActive="is-active"
          [routerLinkActiveOptions]="{ exact: true }"
+         (click)="handleNavigation()"
       >
         Home
       </a>
@@ -37,6 +41,7 @@
       <a class="navbar-item"
          routerLink="/shop"
          routerLinkActive="is-active"
+         (click)="handleNavigation()"
       >
         Shop
       </a>
