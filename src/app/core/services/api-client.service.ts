@@ -22,10 +22,10 @@ export class ApiClientService {
     this.loaderService.isLoading = false;
   }
 
-  public get(url) {
+  public get(url, query = {}) {
     this.loaderService.isLoading = true;
 
-    return this.http.get(url)
+    return this.http.get(url, { params: query })
       .pipe(
         catchError(this.handleError),
         finalize(this.handleFinally)

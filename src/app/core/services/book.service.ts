@@ -15,8 +15,8 @@ export class BookService {
   constructor(private apiClient: ApiClientService, private configService: ConfigService) {
   }
 
-  public fetch(): Observable<Book[]> {
-    return this.apiClient.get(this.configService.urls.books)
+  public fetch(query = {}): Observable<Book[]> {
+    return this.apiClient.get(this.configService.urls.books, query)
       .pipe(
         map((response: any) => {
           return response.data.books.map(book => {

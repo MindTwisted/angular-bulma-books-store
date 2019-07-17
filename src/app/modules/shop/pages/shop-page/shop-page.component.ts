@@ -19,4 +19,8 @@ export class ShopPageComponent implements OnInit {
     this.books$ = this.bookService.fetch();
   }
 
+  public handleFilter(filters) {
+    this.books$ = this.bookService.fetch(filters);
+  }
+
 }

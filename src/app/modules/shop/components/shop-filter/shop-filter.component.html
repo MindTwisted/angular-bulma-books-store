@@ -1,0 +1,77 @@
+<div class="shopFilter">
+
+  <aside class="shopFilter__panel menu"
+         [class.shopFilter__panel--isActive]="isActive"
+  >
+    <p class="menu-label">
+      Filters
+    </p>
+    <ul class="menu-list">
+      <li>
+        <div class="field">
+          <label class="label has-text-weight-light"
+                 for="filterTitle"
+          >
+            Title
+          </label>
+          <p class="control">
+            <input class="input"
+                   type="text"
+                   id="filterTitle"
+                   [(ngModel)]="filters.search"
+            >
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="field is-grouped is-grouped-centered">
+          <p class="control"
+             [style.display]="isFiltersSet ? 'block' : 'none'"
+          >
+            <button class="button is-info is-medium"
+                    (click)="submitFilters()"
+            >
+              <span class="icon">
+                <i class="fas fa-search"></i>
+              </span>
+            </button>
+          </p>
+          <p class="control"
+             [style.display]="isFiltersApplied ? 'block' : 'none'"
+          >
+            <button class="button is-danger is-medium"
+                    (click)="resetFilters()"
+            >
+              <span class="icon">
+                <i class="fas fa-ban"></i>
+              </span>
+            </button>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </aside>
+
+  <button class="shopFilter__triggerButton button is-rounded is-medium"
+          [class.is-dark]="!isFiltersApplied"
+          [class.is-warning]="isFiltersApplied"
+          (click)="toggleMenu(); $event.stopImmediatePropagation()"
+  >
+    <span class="icon"
+          *ngIf="!isActive; else activeFilterButton"
+    >
+      <i class="fas fa-filter"
+         *ngIf="!isFiltersApplied; else appliedFiltersIcon"
+      ></i>
+      <ng-template #appliedFiltersIcon>
+        <i class="fas fa-funnel-dollar"></i>
+      </ng-template>
+    </span>
+    <ng-template #activeFilterButton>
+      <span class="icon">
+        <i class="fas fa-times"></i>
+      </span>
+    </ng-template>
+  </button>
+
+</div>
