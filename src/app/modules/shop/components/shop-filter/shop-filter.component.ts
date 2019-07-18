@@ -1,8 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
-
-const initialFilters = {
-  search: ''
-};
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-shop-filter',
@@ -11,11 +7,12 @@ const initialFilters = {
 })
 export class ShopFilterComponent implements OnInit {
 
+  @Input() public filters: any;
   @Output() public submitFilter = new EventEmitter();
+  @Output() public resetFilter = new EventEmitter();
 
   public isActive = false;
   public isFiltersApplied = false;
-  public filters = { ...initialFilters };
 
   get isFiltersSet() {
     return this.filters.search;
@@ -42,13 +39,12 @@ export class ShopFilterComponent implements OnInit {
 
   public submitFilters() {
     this.isFiltersApplied = true;
-    this.submitFilter.emit(this.filters);
+    this.submitFilter.emit();
   }
 
   public resetFilters() {
-    this.filters = { ...initialFilters };
     this.isFiltersApplied = false;
-    this.submitFilter.emit(this.filters);
+    this.resetFilter.emit();
   }
 
 }

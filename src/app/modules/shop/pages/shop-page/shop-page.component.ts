@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from '../../../../core/services/book.service';
 import Book from '../../../../shared/models/Book';
 
+const initialFilters = {
+  search: ''
+};
+
 @Component({
   selector: 'app-shop-page',
   templateUrl: './shop-page.component.html',
@@ -11,7 +15,7 @@ export class ShopPageComponent implements OnInit {
 
   public books: Book[] = [];
   public offset = 0;
-  public filters = {};
+  public filters = { ...initialFilters };
 
   constructor(public bookService: BookService) {
   }
@@ -23,10 +27,18 @@ export class ShopPageComponent implements OnInit {
       });
   }
 
-  public handleFilter(filters) {
-    this.filters = filters;
+  public submitFilter() {
     this.offset = 0;
-    this.bookService.fetch(filters)
+    this.bookService.fetch(this.filters)
+      .subscribe((books: Book[]) => {
+        this.books = books;
+      });
+  }
+
+  public resetFilter() {
+    this.offset = 0;
+    this.filters = { ...initialFilters };
+    this.bookService.fetch(this.filters)
       .subscribe((books: Book[]) => {
         this.books = books;
       });
