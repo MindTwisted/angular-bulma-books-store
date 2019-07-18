@@ -4,24 +4,10 @@
 
   <app-shop-filter (submitFilter)="handleFilter($event)"></app-shop-filter>
 
-  <div *ngIf="books$ | async as books">
+  <app-books-list [books]="books"></app-books-list>
 
-    <div class="columns is-multiline"
-         *ngIf="books.length > 0; else emptyBooks"
-    >
-      <div class="column is-one-quarter-fullhd is-one-third-widescreen is-half-tablet"
-           *ngFor="let book of books"
-      >
-        <app-book-item [book]="book"></app-book-item>
-      </div>
-    </div>
-
-    <ng-template #emptyBooks>
-      <div class="has-text-centered">
-        There are no books yet.
-      </div>
-    </ng-template>
-
-  </div>
+  <app-load-more *ngIf="books.length > 0 && offset >= 0"
+                 (loadMore)="handleLoadMore()"
+  ></app-load-more>
 
 </div>

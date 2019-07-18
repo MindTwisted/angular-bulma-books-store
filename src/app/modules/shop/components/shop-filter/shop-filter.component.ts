@@ -1,5 +1,9 @@
 import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 
+const initialFilters = {
+  search: ''
+};
+
 @Component({
   selector: 'app-shop-filter',
   templateUrl: './shop-filter.component.html',
@@ -11,10 +15,7 @@ export class ShopFilterComponent implements OnInit {
 
   public isActive = false;
   public isFiltersApplied = false;
-
-  public filters: {
-    search: string;
-  };
+  public filters = { ...initialFilters };
 
   get isFiltersSet() {
     return this.filters.search;
@@ -33,7 +34,6 @@ export class ShopFilterComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.resetFilters();
   }
 
   public toggleMenu() {
@@ -41,17 +41,14 @@ export class ShopFilterComponent implements OnInit {
   }
 
   public submitFilters() {
-    this.submitFilter.emit(this.filters);
     this.isFiltersApplied = true;
+    this.submitFilter.emit(this.filters);
   }
 
   public resetFilters() {
-    this.filters = {
-      search: ''
-    };
-
-    this.submitFilter.emit(this.filters);
+    this.filters = { ...initialFilters };
     this.isFiltersApplied = false;
+    this.submitFilter.emit(this.filters);
   }
 
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { BookService } from '../../../../core/services/book.service';
 import Book from '../../../../shared/models/Book';
 
@@ -10,17 +9,39 @@ import Book from '../../../../shared/models/Book';
 })
 export class ShopPageComponent implements OnInit {
 
-  public books$: Observable<Book[]>;
+  public books: Book[] = [];
+  public offset = 0;
+  public filters = {};
 
   constructor(public bookService: BookService) {
   }
 
   public ngOnInit() {
-    this.books$ = this.bookService.fetch();
+    this.bookService.fetch()
+      .subscribe((books: Book[]) => {
+        this.books = books;
+      });
   }
 
   public handleFilter(filters) {
-    this.books$ = this.bookService.fetch(filters);
+    this.filters = filters;
+    this.offset = 0;
+    this.bookService.fetch(filters)
+      .subscribe((books: Book[]) => {
+        this.books = books;
+      });
+  }
+
+  public handleLoadMore() {
+    this.offset += 50;
+    this.bookService.fetch({ ...this.filters, offset: this.offset })
+      .subscribe((books: Book[]) => {
+        if (!books.length) {
+          this.offset = -1;
+        }
+
+        this.books.push(...books);
+      });
   }
 
 }
