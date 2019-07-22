@@ -14,39 +14,56 @@
           >
             Title
           </label>
-          <p class="control">
+          <p class="control has-icons-right">
             <input class="input"
                    type="text"
                    id="filterTitle"
-                   [(ngModel)]="filters.search"
+                   [value]="filters.search"
+                   (input)="handleSetSearch($event)"
             >
+            <button class="delete shopFilter__clearField"
+                    *ngIf="filters.search"
+                    (click)="handleClearSearch(); $event.stopImmediatePropagation()"
+            ></button>
           </p>
         </div>
       </li>
       <li>
-        <div class="field is-grouped is-grouped-centered">
-          <p class="control"
-             [style.display]="isFiltersSet ? 'block' : 'none'"
+        <div class="field">
+          <label class="label has-text-weight-light"
+                 for="filterAuthors"
           >
-            <button class="button is-info is-medium"
-                    (click)="submitFilters()"
-            >
+            Authors
+          </label>
+          <p class="control">
+            <app-autocomplete-input #authorsFilter
+                                    componentClass="input"
+                                    componentId="filterAuthors"
+                                    (search)="handleAuthorSearch($event)"
+                                    (selectResults)="handleAuthorSelect($event)"
+                                    [searchResults]="searchAuthors"
+            ></app-autocomplete-input>
+          </p>
+        </div>
+      </li>
+      <li>
+        <div class="field is-grouped shopFilter__controls">
+          <button class="button is-primary control has-text-centered"
+                  (click)="submitFilters()"
+                  [style.display]="isFiltersSet ? 'block' : 'none'"
+          >
               <span class="icon">
                 <i class="fas fa-search"></i>
               </span>
-            </button>
-          </p>
-          <p class="control"
-             [style.display]="isFiltersApplied ? 'block' : 'none'"
+          </button>
+          <button class="button is-warning control has-text-centered"
+                  (click)="resetFilters()"
+                  [style.display]="isFiltersApplied ? 'block' : 'none'"
           >
-            <button class="button is-danger is-medium"
-                    (click)="resetFilters()"
-            >
               <span class="icon">
                 <i class="fas fa-ban"></i>
               </span>
-            </button>
-          </p>
+          </button>
         </div>
       </li>
     </ul>

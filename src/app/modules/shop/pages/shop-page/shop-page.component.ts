@@ -3,7 +3,8 @@ import { BookService } from '../../../../core/services/book.service';
 import Book from '../../../../shared/models/Book';
 
 const initialFilters = {
-  search: ''
+  search: '',
+  authors: ''
 };
 
 @Component({

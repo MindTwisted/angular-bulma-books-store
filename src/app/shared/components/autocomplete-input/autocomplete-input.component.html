@@ -1,0 +1,48 @@
+<div class="autocompleteInput dropdown is-active">
+  <div class="autocompleteInput__selectedResults tags"
+       *ngIf="selectedResults.length > 0"
+  >
+    <span class="tag"
+          *ngFor="let result of selectedResults"
+    >
+      {{ result.value }}
+      <button class="delete is-small"
+              (click)="unselectResult(result); $event.stopImmediatePropagation()"
+      ></button>
+    </span>
+  </div>
+  <div class="dropdown-trigger">
+    <p class="control has-icons-right">
+      <input type="text"
+             [class]="componentClass"
+             [id]="componentId"
+             (input)="handleSearch()"
+             [(ngModel)]="searchValue"
+             (focus)="isResultsActive = true"
+      >
+      <button class="delete autocompleteInput__clearField"
+              *ngIf="searchValue"
+              (click)="handleClearSearch(); $event.stopImmediatePropagation()"
+      ></button>
+    </p>
+  </div>
+  <div class="dropdown-menu"
+       *ngIf="isResultsActive"
+  >
+    <div class="dropdown-content"
+         *ngIf="searchResults.length > 0; else emptyResults"
+    >
+      <ng-container *ngFor="let result of searchResults">
+        <a *ngIf="!isResultSelected(result)"
+           class="dropdown-item"
+           (click)="selectResult(result); $event.stopImmediatePropagation()"
+        >
+          {{ result.value }}
+        </a>
+      </ng-container>
+    </div>
+    <ng-template #emptyResults>
+      <p class="autocompleteInput__emptyResults">There are no results.</p>
+    </ng-template>
+  </div>
+</div>

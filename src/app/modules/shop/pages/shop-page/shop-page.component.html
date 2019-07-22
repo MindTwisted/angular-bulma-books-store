@@ -4,7 +4,7 @@
 
   <app-shop-filter (submitFilter)="submitFilter()"
                    (resetFilter)="resetFilter()"
-                   [filters]="filters"
+                   [(filters)]="filters"
   ></app-shop-filter>
 
   <app-books-list [books]="books"></app-books-list>

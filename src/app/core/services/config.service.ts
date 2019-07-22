@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 export class ConfigService {
   public apiUrl = 'http://docker-machine.test:3000/';
   public urls = {
-    books: this.apiUrl + 'api/books'
+    books: this.apiUrl + 'api/books',
+    authors: this.apiUrl + 'api/authors'
   };
 
   constructor() {
