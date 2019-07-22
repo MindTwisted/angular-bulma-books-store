@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { AuthorService } from '../../../../core/services/author.service';
-import { SearchResult } from '../../../../shared/components/autocomplete-input/search-result';
-import Author from '../../../../shared/models/Author';
+import { SearchResultInterface } from '../../../../shared/components/autocomplete-input/search-result.interface';
+import AuthorModel from '../../../../shared/models/author.model';
 
 @Component({
   selector: 'app-shop-filter',
@@ -18,7 +18,7 @@ export class ShopFilterComponent implements OnInit {
 
   public isActive = false;
   public isFiltersApplied = false;
-  public searchAuthors: SearchResult[] = [];
+  public searchAuthors: SearchResultInterface[] = [];
 
   get isFiltersSet() {
     return this.filters.search || this.filters.authors;
@@ -65,7 +65,7 @@ export class ShopFilterComponent implements OnInit {
 
   public handleAuthorSearch(value: string) {
     this.authorService.fetch({ search: value })
-      .subscribe((authors: Author[]) => {
+      .subscribe((authors: AuthorModel[]) => {
         this.searchAuthors = authors.map(author => {
           return {
             key: author._id,
@@ -75,8 +75,8 @@ export class ShopFilterComponent implements OnInit {
       });
   }
 
-  public handleAuthorSelect(select: SearchResult[]) {
-    const authors = select.reduce((previousValue: any, currentValue: SearchResult, index: number) => {
+  public handleAuthorSelect(select: SearchResultInterface[]) {
+    const authors = select.reduce((previousValue: any, currentValue: SearchResultInterface, index: number) => {
       if (index === 0) {
         return currentValue.key;
       }

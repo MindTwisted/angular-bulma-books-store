@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import Book from '../../../../shared/models/Book';
+import BookModel from '../../../../shared/models/book.model';
 
 @Component({
   selector: 'app-books-list',
@@ -8,7 +8,7 @@ import Book from '../../../../shared/models/Book';
 })
 export class BooksListComponent implements OnInit {
 
-  @Input() public books: Book[];
+  @Input() public books: BookModel[];
 
   constructor() {
   }

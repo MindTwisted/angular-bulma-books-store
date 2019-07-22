@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { SearchResult } from './search-result';
+import { SearchResultInterface } from './search-result.interface';
 
 @Component({
   selector: 'app-autocomplete-input',
@@ -10,14 +10,14 @@ export class AutocompleteInputComponent implements OnInit {
 
   @Input() public componentClass: string;
   @Input() public componentId: string;
-  @Input() public searchResults: SearchResult[];
+  @Input() public searchResults: SearchResultInterface[];
   @Output() public search = new EventEmitter();
   @Output() public selectResults = new EventEmitter();
 
   public searchValue = '';
   public searchTimer: any = null;
   public isResultsActive = false;
-  public selectedResults: SearchResult[] = [];
+  public selectedResults: SearchResultInterface[] = [];
 
   @HostListener('document:click', ['$event'])
   private clickOut(event) {
@@ -50,8 +50,8 @@ export class AutocompleteInputComponent implements OnInit {
     this.searchValue = '';
   }
 
-  public selectResult(result: SearchResult) {
-    const resultId = this.selectedResults.findIndex((selectedResult: SearchResult) => {
+  public selectResult(result: SearchResultInterface) {
+    const resultId = this.selectedResults.findIndex((selectedResult: SearchResultInterface) => {
       return selectedResult.key === result.key;
     });
 
@@ -63,16 +63,16 @@ export class AutocompleteInputComponent implements OnInit {
     this.selectResults.emit(this.selectedResults);
   }
 
-  public unselectResult(result: SearchResult) {
-    this.selectedResults = this.selectedResults.filter((selectedResult: SearchResult) => {
+  public unselectResult(result: SearchResultInterface) {
+    this.selectedResults = this.selectedResults.filter((selectedResult: SearchResultInterface) => {
       return selectedResult.key !== result.key;
     });
 
     this.selectResults.emit(this.selectedResults);
   }
 
-  public isResultSelected(result: SearchResult) {
-    const index = this.selectedResults.findIndex((selectedResult: SearchResult) => {
+  public isResultSelected(result: SearchResultInterface) {
+    const index = this.selectedResults.findIndex((selectedResult: SearchResultInterface) => {
       return result.key === selectedResult.key;
     });
 
