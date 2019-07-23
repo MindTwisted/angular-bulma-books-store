@@ -17,14 +17,14 @@ export class ShopPageComponent implements OnInit {
   constructor(public bookService: BookService) {
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
     this.bookService.fetch()
       .subscribe((books: BookModel[]) => {
         this.books = books;
       });
   }
 
-  public applyFilter() {
+  public applyFilter(): void {
     this.offset = 0;
     this.bookService.fetch(this.shopFilter.filters)
       .subscribe((books: BookModel[]) => {
@@ -32,7 +32,7 @@ export class ShopPageComponent implements OnInit {
       });
   }
 
-  public handleLoadMore() {
+  public handleLoadMore(): void {
     this.offset += 50;
     this.bookService.fetch({ ...this.shopFilter.filters, offset: this.offset })
       .subscribe((books: BookModel[]) => {

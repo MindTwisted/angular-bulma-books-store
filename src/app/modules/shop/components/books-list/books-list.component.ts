@@ -13,7 +13,7 @@ export class BooksListComponent implements OnInit {
   constructor() {
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
   }
 
 }

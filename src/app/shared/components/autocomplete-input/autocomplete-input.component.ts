@@ -20,7 +20,7 @@ export class AutocompleteInputComponent implements OnInit {
   public selectedResults: SearchResultInterface[] = [];
 
   @HostListener('document:click', ['$event'])
-  private clickOut(event) {
+  private clickOut(event): void {
     if (this.elementRef.nativeElement.contains(event.target)) {
       return;
     }
@@ -31,10 +31,10 @@ export class AutocompleteInputComponent implements OnInit {
   constructor(private elementRef: ElementRef) {
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
   }
 
-  public handleSearch() {
+  public handleSearch(): void {
     if (this.searchTimer) {
       return;
     }
@@ -46,11 +46,11 @@ export class AutocompleteInputComponent implements OnInit {
     }, 500);
   }
 
-  public handleClearSearch() {
+  public handleClearSearch(): void {
     this.searchValue = '';
   }
 
-  public selectResult(result: SearchResultInterface) {
+  public selectResult(result: SearchResultInterface): void {
     const resultId = this.selectedResults.findIndex((selectedResult: SearchResultInterface) => {
       return selectedResult.key === result.key;
     });
@@ -63,7 +63,7 @@ export class AutocompleteInputComponent implements OnInit {
     this.selectResults.emit(this.selectedResults);
   }
 
-  public unselectResult(result: SearchResultInterface) {
+  public unselectResult(result: SearchResultInterface): void {
     this.selectedResults = this.selectedResults.filter((selectedResult: SearchResultInterface) => {
       return selectedResult.key !== result.key;
     });
@@ -71,7 +71,7 @@ export class AutocompleteInputComponent implements OnInit {
     this.selectResults.emit(this.selectedResults);
   }
 
-  public isResultSelected(result: SearchResultInterface) {
+  public isResultSelected(result: SearchResultInterface): boolean {
     const index = this.selectedResults.findIndex((selectedResult: SearchResultInterface) => {
       return result.key === selectedResult.key;
     });

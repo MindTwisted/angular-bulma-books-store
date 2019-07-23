@@ -12,7 +12,7 @@ export class PageTitleComponent implements OnInit {
   constructor() {
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
   }
 
 }

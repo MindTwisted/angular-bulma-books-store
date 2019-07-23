@@ -12,14 +12,14 @@ export class NavigationBarComponent implements OnInit {
   constructor() {
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
   }
 
-  public handleActivateMenu() {
+  public handleActivateMenu(): void {
     this.isMobileMenuActive = !this.isMobileMenuActive;
   }
 
-  public handleNavigation() {
+  public handleNavigation(): void {
     this.isMobileMenuActive = false;
 
     window.scrollTo({

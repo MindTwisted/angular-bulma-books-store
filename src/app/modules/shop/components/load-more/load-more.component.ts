@@ -12,7 +12,7 @@ export class LoadMoreComponent implements OnInit {
   constructor() {
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
   }
 
 }

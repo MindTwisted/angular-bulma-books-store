@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, finalize } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { LoaderService } from './loader.service';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class ApiClientService {
     this.loaderService.isLoading = false;
   }
 
-  public get(url, query = {}) {
+  public get(url, query = {}): Observable<any> {
     this.loaderService.isLoading = true;
 
     return this.http.get(url, { params: query })

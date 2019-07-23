@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
 import { AuthorService } from '../../../../core/services/author.service';
 import { SearchResultInterface } from '../../../../shared/components/autocomplete-input/search-result.interface';
 import AuthorModel from '../../../../shared/models/author.model';
@@ -23,15 +23,15 @@ export class ShopFilterComponent implements OnInit {
   public isFiltersApplied = false;
   public searchAuthors: SearchResultInterface[] = [];
 
-  get isFiltersSet() {
-    return this.filters.search || this.filters.authors;
+  get isFiltersSet(): boolean {
+    return Boolean(this.filters.search || this.filters.authors);
   }
 
   constructor(private elementRef: ElementRef, private authorService: AuthorService) {
   }
 
   @HostListener('document:click', ['$event'])
-  private clickOut(event) {
+  private clickOut(event): void {
     if (this.elementRef.nativeElement.contains(event.target)) {
       return;
     }
@@ -39,19 +39,19 @@ export class ShopFilterComponent implements OnInit {
     this.isActive = false;
   }
 
-  public ngOnInit() {
+  public ngOnInit(): void {
   }
 
-  public toggleMenu() {
+  public toggleMenu(): void {
     this.isActive = !this.isActive;
   }
 
-  public submitFilters() {
+  public submitFilters(): void {
     this.isFiltersApplied = true;
     this.applyFilter.emit();
   }
 
-  public resetFilters() {
+  public resetFilters(): void {
     this.isFiltersApplied = false;
     this.filters = { ...initialFilters };
     this.authorsFilter.searchValue = '';
@@ -59,11 +59,11 @@ export class ShopFilterComponent implements OnInit {
     this.applyFilter.emit();
   }
 
-  public handleClearSearch() {
+  public handleClearSearch(): void {
     this.filters.search = '';
   }
 
-  public handleAuthorSearch(value: string) {
+  public handleAuthorSearch(value: string): void {
     this.authorService.fetch({ search: value })
       .subscribe((authors: AuthorModel[]) => {
         this.searchAuthors = authors.map(author => {
@@ -75,7 +75,7 @@ export class ShopFilterComponent implements OnInit {
       });
   }
 
-  public handleAuthorSelect(select: SearchResultInterface[]) {
+  public handleAuthorSelect(select: SearchResultInterface[]): void {
     this.filters.authors = select.reduce((previousValue: any, currentValue: SearchResultInterface, index: number) => {
       if (index === 0) {
         return currentValue.key;
