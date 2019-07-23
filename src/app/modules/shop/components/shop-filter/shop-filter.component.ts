@@ -3,6 +3,11 @@ import { AuthorService } from '../../../../core/services/author.service';
 import { SearchResultInterface } from '../../../../shared/components/autocomplete-input/search-result.interface';
 import AuthorModel from '../../../../shared/models/author.model';
 
+const initialFilters = {
+  search: '',
+  authors: ''
+};
+
 @Component({
   selector: 'app-shop-filter',
   templateUrl: './shop-filter.component.html',
@@ -10,12 +15,10 @@ import AuthorModel from '../../../../shared/models/author.model';
 })
 export class ShopFilterComponent implements OnInit {
 
-  @Input() public filters: any;
-  @Output() public filtersChange = new EventEmitter();
-  @Output() public submitFilter = new EventEmitter();
-  @Output() public resetFilter = new EventEmitter();
+  @Output() public applyFilter = new EventEmitter();
   @ViewChild('authorsFilter', { static: false }) public authorsFilter;
 
+  public filters = { ...initialFilters };
   public isActive = false;
   public isFiltersApplied = false;
   public searchAuthors: SearchResultInterface[] = [];
@@ -45,22 +48,19 @@ export class ShopFilterComponent implements OnInit {
 
   public submitFilters() {
     this.isFiltersApplied = true;
-    this.submitFilter.emit();
+    this.applyFilter.emit();
   }
 
   public resetFilters() {
     this.isFiltersApplied = false;
-    this.resetFilter.emit();
+    this.filters = { ...initialFilters };
     this.authorsFilter.searchValue = '';
     this.authorsFilter.selectedResults = [];
-  }
-
-  public handleSetSearch(event) {
-    this.filtersChange.emit({ ...this.filters, search: event.target.value });
+    this.applyFilter.emit();
   }
 
   public handleClearSearch() {
-    this.filtersChange.emit({ ...this.filters, search: '' });
+    this.filters.search = '';
   }
 
   public handleAuthorSearch(value: string) {
@@ -76,15 +76,13 @@ export class ShopFilterComponent implements OnInit {
   }
 
   public handleAuthorSelect(select: SearchResultInterface[]) {
-    const authors = select.reduce((previousValue: any, currentValue: SearchResultInterface, index: number) => {
+    this.filters.authors = select.reduce((previousValue: any, currentValue: SearchResultInterface, index: number) => {
       if (index === 0) {
         return currentValue.key;
       }
 
       return previousValue + ',' + currentValue.key;
     }, '');
-
-    this.filtersChange.emit({ ...this.filters, authors });
   }
 
 }

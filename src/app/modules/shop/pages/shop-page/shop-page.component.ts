@@ -1,11 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BookService } from '../../../../core/services/book.service';
 import BookModel from '../../../../shared/models/book.model';
-
-const initialFilters = {
-  search: '',
-  authors: ''
-};
 
 @Component({
   selector: 'app-shop-page',
@@ -16,7 +11,8 @@ export class ShopPageComponent implements OnInit {
 
   public books: BookModel[] = [];
   public offset = 0;
-  public filters = { ...initialFilters };
+
+  @ViewChild('shopFilter', { static: false }) public shopFilter;
 
   constructor(public bookService: BookService) {
   }
@@ -28,18 +24,9 @@ export class ShopPageComponent implements OnInit {
       });
   }
 
-  public submitFilter() {
+  public applyFilter() {
     this.offset = 0;
-    this.bookService.fetch(this.filters)
-      .subscribe((books: BookModel[]) => {
-        this.books = books;
-      });
-  }
-
-  public resetFilter() {
-    this.offset = 0;
-    this.filters = { ...initialFilters };
-    this.bookService.fetch(this.filters)
+    this.bookService.fetch(this.shopFilter.filters)
       .subscribe((books: BookModel[]) => {
         this.books = books;
       });
@@ -47,7 +34,7 @@ export class ShopPageComponent implements OnInit {
 
   public handleLoadMore() {
     this.offset += 50;
-    this.bookService.fetch({ ...this.filters, offset: this.offset })
+    this.bookService.fetch({ ...this.shopFilter.filters, offset: this.offset })
       .subscribe((books: BookModel[]) => {
         if (!books.length) {
           this.offset = -1;
