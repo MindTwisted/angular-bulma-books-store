@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
-import { AuthorService } from '../../../../core/services/author.service';
-import { SearchResultInterface } from '../../../../shared/components/autocomplete-input/search-result.interface';
-import AuthorModel from '../../../../shared/models/author.model';
+import { AuthorService } from '@app/core/services/author.service';
+import { SearchResultInterface } from '@app/shared/components/autocomplete-input/search-result.interface';
+import { AuthorModel } from '@app/shared/models/author.model';
 
 const initialFilters = {
   search: '',

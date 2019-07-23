@@ -1,6 +1,6 @@
-import { GenreInterface } from './genre.interface';
+import { GenreInterface } from '@app/shared/models/genre.interface';
 
-class GenreModel implements GenreInterface {
+export class GenreModel implements GenreInterface {
   public _id: string;
   public name: string;
 
@@ -9,5 +9,3 @@ class GenreModel implements GenreInterface {
     this.name = genre.name;
   }
 }
-
-export default GenreModel;

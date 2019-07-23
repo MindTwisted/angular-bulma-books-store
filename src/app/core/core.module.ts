@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
-import { LoaderComponent } from './components/loader/loader.component';
-import { AppRoutingModule } from '../app-routing.module';
-import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { LoaderComponent } from '@app/core/components/loader/loader.component';
+import { NavigationBarComponent } from '@app/core/components/navigation-bar/navigation-bar.component';
+import { ScrollTopComponent } from '@app/core/components/scroll-top/scroll-top.component';
 
 @NgModule({
   declarations: [
@@ -21,4 +21,5 @@ import { ScrollTopComponent } from './components/scroll-top/scroll-top.component
     ScrollTopComponent
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+}

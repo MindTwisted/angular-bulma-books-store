@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoadMoreComponent } from './load-more.component';
+import { LoadMoreComponent } from '@app/modules/shop/components/load-more/load-more.component';
 
 describe('LoadMoreComponent', () => {
   let component: LoadMoreComponent;
@@ -8,9 +8,9 @@ describe('LoadMoreComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoadMoreComponent ]
+      declarations: [LoadMoreComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

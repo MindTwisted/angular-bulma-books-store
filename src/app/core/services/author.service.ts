@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
+import { ApiClientService } from '@app/core/services/api-client.service';
+import { ConfigService } from '@app/core/services/config.service';
+import { AuthorInterface } from '@app/shared/models/author.interface';
+import { AuthorModel } from '@app/shared/models/author.model';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AuthorInterface } from '../../shared/models/author.interface';
-import AuthorModel from '../../shared/models/author.model';
-import { ApiClientService } from './api-client.service';
-import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'

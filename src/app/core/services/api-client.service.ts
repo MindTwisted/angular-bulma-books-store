@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, finalize } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { LoaderService } from '@app/core/services/loader.service';
 import { Observable, throwError } from 'rxjs';
-import { LoaderService } from './loader.service';
+import { catchError, finalize } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

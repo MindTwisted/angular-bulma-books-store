@@ -1,6 +1,6 @@
-import { AuthorInterface } from './author.interface';
+import { AuthorInterface } from '@app/shared/models/author.interface';
 
-class AuthorModel implements AuthorInterface {
+export class AuthorModel implements AuthorInterface {
   public _id: string;
   public name: string;
 
@@ -9,5 +9,3 @@ class AuthorModel implements AuthorInterface {
     this.name = author.name;
   }
 }
-
-export default AuthorModel;

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthorService } from './author.service';
+import { AuthorService } from '@app/core/services/author.service';
 
 describe('AuthorService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

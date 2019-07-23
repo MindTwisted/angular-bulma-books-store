@@ -1,10 +1,10 @@
-import { AuthorInterface } from './author.interface';
-import { BookInterface } from './book.interface';
-import { GenreInterface } from './genre.interface';
-import AuthorModel from './author.model';
-import GenreModel from './genre.model';
+import { AuthorInterface } from '@app/shared/models/author.interface';
+import { AuthorModel } from '@app/shared/models/author.model';
+import { BookInterface } from '@app/shared/models/book.interface';
+import { GenreInterface } from '@app/shared/models/genre.interface';
+import { GenreModel } from '@app/shared/models/genre.model';
 
-class BookModel implements BookInterface {
+export class BookModel implements BookInterface {
   public _id: string;
   public title: string;
   public description: string;
@@ -27,5 +27,3 @@ class BookModel implements BookInterface {
     this.genres = book.genres.map((genre: GenreInterface) => new GenreModel(genre));
   }
 }
-
-export default BookModel;

@@ -1,5 +1,5 @@
 import { AfterViewChecked, ChangeDetectorRef, Component } from '@angular/core';
-import { LoaderService } from './core/services/loader.service';
+import { LoaderService } from '@app/core/services/loader.service';
 
 @Component({
   selector: 'app-root',

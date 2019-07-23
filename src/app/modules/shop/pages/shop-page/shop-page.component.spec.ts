@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShopPageComponent } from './shop-page.component';
+import { ShopPageComponent } from '@app/modules/shop/pages/shop-page/shop-page.component';
 
 describe('ShopPageComponent', () => {
   let component: ShopPageComponent;

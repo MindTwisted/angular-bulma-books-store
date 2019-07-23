@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { BookService } from '../../../../core/services/book.service';
-import BookModel from '../../../../shared/models/book.model';
+import { BookService } from '@app/core/services/book.service';
+import { BookModel } from '@app/shared/models/book.model';
 
 @Component({
   selector: 'app-shop-page',

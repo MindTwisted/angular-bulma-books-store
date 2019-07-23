@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { SearchResultInterface } from './search-result.interface';
+import { SearchResultInterface } from '@app/shared/components/autocomplete-input/search-result.interface';
 
 @Component({
   selector: 'app-autocomplete-input',

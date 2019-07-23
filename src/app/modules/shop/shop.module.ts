@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from '../../shared/shared.module';
-import { ShopPageComponent } from './pages/shop-page/shop-page.component';
-import { BookItemComponent } from './components/book-item/book-item.component';
-import { ShopRoutingModule } from './shop-routing.module';
-import { ShopFilterComponent } from './components/shop-filter/shop-filter.component';
-import { BooksListComponent } from './components/books-list/books-list.component';
-import { LoadMoreComponent } from './components/load-more/load-more.component';
+import { BookItemComponent } from '@app/modules/shop/components/book-item/book-item.component';
+import { BooksListComponent } from '@app/modules/shop/components/books-list/books-list.component';
+import { LoadMoreComponent } from '@app/modules/shop/components/load-more/load-more.component';
+import { ShopFilterComponent } from '@app/modules/shop/components/shop-filter/shop-filter.component';
+import { ShopPageComponent } from '@app/modules/shop/pages/shop-page/shop-page.component';
+import { ShopRoutingModule } from '@app/modules/shop/shop-routing.module';
+import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
   declarations: [
