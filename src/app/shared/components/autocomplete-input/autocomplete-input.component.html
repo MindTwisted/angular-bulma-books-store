@@ -1,4 +1,7 @@
-<div class="autocompleteInput dropdown is-active">
+<div class="autocompleteInput dropdown is-active"
+     appClickOutside
+     (clickedOutside)="isResultsActive = false"
+>
   <div class="autocompleteInput__selectedResults tags"
        *ngIf="selectedResults.length > 0"
   >

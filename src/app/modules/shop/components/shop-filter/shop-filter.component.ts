@@ -33,10 +33,6 @@ export class ShopFilterComponent implements OnInit {
   public ngOnInit(): void {
   }
 
-  public toggleMenu(): void {
-    this.isActive = !this.isActive;
-  }
-
   public submitFilters(): void {
     this.isFiltersApplied = true;
     this.applyFilter.emit();

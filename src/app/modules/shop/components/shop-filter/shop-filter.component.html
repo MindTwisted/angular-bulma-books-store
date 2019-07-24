@@ -1,4 +1,7 @@
-<div class="shopFilter">
+<div appClickOutside
+     (clickedOutside)="isActive = false"
+     class="shopFilter"
+>
 
   <aside class="shopFilter__panel menu"
          [class.shopFilter__panel--isActive]="isActive"
@@ -41,8 +44,6 @@
                                     (search)="handleAuthorSearch($event)"
                                     (selectResults)="handleAuthorSelect($event)"
                                     [searchResults]="searchAuthors"
-                                    appClickOutsideClose
-                                    activePropName="isResultsActive"
             ></app-autocomplete-input>
           </p>
         </div>
@@ -73,7 +74,7 @@
   <button class="shopFilter__triggerButton button is-rounded is-medium"
           [class.is-dark]="!isFiltersApplied"
           [class.is-warning]="isFiltersApplied"
-          (click)="toggleMenu(); $event.stopImmediatePropagation()"
+          (click)="isActive = !isActive; $event.stopImmediatePropagation()"
   >
     <span class="icon"
           *ngIf="!isActive; else activeFilterButton"
