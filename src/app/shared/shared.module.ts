@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AutocompleteInputComponent } from '@app/shared/components/autocomplete-input/autocomplete-input.component';
 import { PageTitleComponent } from '@app/shared/components/page-title/page-title.component';
+import { ClickOutsideCloseDirective } from './directives/click-outside-close.directive';
 
 @NgModule({
   declarations: [
     PageTitleComponent,
-    AutocompleteInputComponent
+    AutocompleteInputComponent,
+    ClickOutsideCloseDirective
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { PageTitleComponent } from '@app/shared/components/page-title/page-title
   ],
   exports: [
     PageTitleComponent,
-    AutocompleteInputComponent
+    AutocompleteInputComponent,
+    ClickOutsideCloseDirective
   ]
 })
 export class SharedModule {

@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SearchResultInterface } from '@app/shared/components/autocomplete-input/search-result.interface';
 
 @Component({
@@ -19,16 +19,7 @@ export class AutocompleteInputComponent implements OnInit {
   public isResultsActive = false;
   public selectedResults: SearchResultInterface[] = [];
 
-  @HostListener('document:click', ['$event'])
-  private clickOut(event): void {
-    if (this.elementRef.nativeElement.contains(event.target)) {
-      return;
-    }
-
-    this.isResultsActive = false;
-  }
-
-  constructor(private elementRef: ElementRef) {
+  constructor() {
   }
 
   public ngOnInit(): void {

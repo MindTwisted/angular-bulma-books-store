@@ -41,6 +41,8 @@
                                     (search)="handleAuthorSearch($event)"
                                     (selectResults)="handleAuthorSelect($event)"
                                     [searchResults]="searchAuthors"
+                                    appClickOutsideClose
+                                    activePropName="isResultsActive"
             ></app-autocomplete-input>
           </p>
         </div>

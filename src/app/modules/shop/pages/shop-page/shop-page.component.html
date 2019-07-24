@@ -4,6 +4,8 @@
 
   <app-shop-filter #shopFilter
                    (applyFilter)="applyFilter()"
+                   appClickOutsideClose
+                   activePropName="isActive"
   ></app-shop-filter>
 
   <app-books-list [books]="books"></app-books-list>

@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { AuthorService } from '@app/core/services/author.service';
 import { SearchResultInterface } from '@app/shared/components/autocomplete-input/search-result.interface';
 import { AuthorModel } from '@app/shared/models/author.model';
@@ -27,16 +27,7 @@ export class ShopFilterComponent implements OnInit {
     return Boolean(this.filters.search || this.filters.authors);
   }
 
-  constructor(private elementRef: ElementRef, private authorService: AuthorService) {
-  }
-
-  @HostListener('document:click', ['$event'])
-  private clickOut(event): void {
-    if (this.elementRef.nativeElement.contains(event.target)) {
-      return;
-    }
-
-    this.isActive = false;
+  constructor(private authorService: AuthorService) {
   }
 
   public ngOnInit(): void {
