@@ -1,51 +1,64 @@
-<div class="autocompleteInput dropdown is-active"
-     appClickOutside
-     (clickedOutside)="isResultsActive = false"
->
-  <div class="autocompleteInput__selectedResults tags"
-       *ngIf="selectedResults.length > 0"
+<div class="field">
+
+  <label *ngIf="componentLabel.length"
+         class="label has-text-weight-light"
+         [for]="componentId"
   >
-    <span class="tag"
-          *ngFor="let result of selectedResults"
+    {{ componentLabel }}
+  </label>
+
+  <div class="control">
+    <div class="autocompleteInput dropdown is-active"
+         appClickOutside
+         (clickedOutside)="isResultsActive = false"
     >
-      {{ result.value }}
-      <button class="delete is-small"
-              (click)="unselectResult(result); $event.stopImmediatePropagation()"
-      ></button>
-    </span>
-  </div>
-  <div class="dropdown-trigger">
-    <p class="control has-icons-right">
-      <input type="text"
-             [class]="componentClass"
-             [id]="componentId"
-             (input)="handleSearch()"
-             [(ngModel)]="searchValue"
-             (focus)="isResultsActive = true"
+      <div class="autocompleteInput__selectedResults tags"
+           *ngIf="selectedResults.length"
       >
-      <button class="delete autocompleteInput__clearField"
-              *ngIf="searchValue"
-              (click)="handleClearSearch(); $event.stopImmediatePropagation()"
-      ></button>
-    </p>
-  </div>
-  <div class="dropdown-menu"
-       *ngIf="isResultsActive"
-  >
-    <div class="dropdown-content"
-         *ngIf="searchResults.length > 0; else emptyResults"
-    >
-      <ng-container *ngFor="let result of searchResults">
-        <a *ngIf="!isResultSelected(result)"
-           class="dropdown-item"
-           (click)="selectResult(result); $event.stopImmediatePropagation()"
+        <span class="tag"
+              *ngFor="let result of selectedResults"
         >
           {{ result.value }}
-        </a>
-      </ng-container>
+          <button class="delete is-small"
+                  (click)="unselectResult(result); $event.stopImmediatePropagation()"
+          ></button>
+        </span>
+      </div>
+      <div class="dropdown-trigger">
+        <p class="control has-icons-right">
+          <input type="text"
+                 [class]="componentClass"
+                 [id]="componentId"
+                 (input)="handleSearch()"
+                 [(ngModel)]="searchValue"
+                 (focus)="isResultsActive = true"
+          >
+          <button class="delete autocompleteInput__clearField"
+                  *ngIf="searchValue"
+                  (click)="handleClearSearch(); $event.stopImmediatePropagation()"
+          ></button>
+        </p>
+      </div>
+      <div class="dropdown-menu"
+           *ngIf="isResultsActive"
+      >
+        <div class="dropdown-content"
+             *ngIf="searchResults.length; else emptyResults"
+        >
+          <ng-container *ngFor="let result of searchResults">
+            <a *ngIf="!isResultSelected(result)"
+               class="dropdown-item"
+               (click)="selectResult(result); $event.stopImmediatePropagation()"
+            >
+              {{ result.value }}
+            </a>
+          </ng-container>
+        </div>
+        <ng-template #emptyResults>
+          <p class="autocompleteInput__emptyResults">There are no results.</p>
+        </ng-template>
+      </div>
     </div>
-    <ng-template #emptyResults>
-      <p class="autocompleteInput__emptyResults">There are no results.</p>
-    </ng-template>
   </div>
+
 </div>

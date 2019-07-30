@@ -10,9 +10,10 @@ export class AutocompleteInputComponent implements OnInit {
 
   @Input() public componentClass: string;
   @Input() public componentId: string;
+  @Input() public componentLabel = '';
   @Input() public searchResults: SearchResultInterface[];
-  @Output() public search = new EventEmitter();
-  @Output() public selectResults = new EventEmitter();
+  @Output() public search = new EventEmitter<string>();
+  @Output() public selectResults = new EventEmitter<SearchResultInterface[]>();
 
   public searchValue = '';
   public searchTimer: any = null;

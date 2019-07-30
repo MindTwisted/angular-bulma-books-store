@@ -31,22 +31,14 @@
         </div>
       </li>
       <li>
-        <div class="field">
-          <label class="label has-text-weight-light"
-                 for="filterAuthors"
-          >
-            Authors
-          </label>
-          <p class="control">
-            <app-autocomplete-input #authorsFilter
-                                    componentClass="input"
-                                    componentId="filterAuthors"
-                                    (search)="handleAuthorSearch($event)"
-                                    (selectResults)="handleAuthorSelect($event)"
-                                    [searchResults]="searchAuthors"
-            ></app-autocomplete-input>
-          </p>
-        </div>
+        <app-autocomplete-input #authorsFilter
+                                componentClass="input"
+                                componentId="filterAuthors"
+                                componentLabel="Authors"
+                                (search)="handleAuthorSearch($event)"
+                                (selectResults)="handleAuthorSelect($event)"
+                                [searchResults]="searchAuthors"
+        ></app-autocomplete-input>
       </li>
       <li>
         <div class="field is-grouped shopFilter__controls">
