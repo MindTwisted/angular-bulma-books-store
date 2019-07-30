@@ -46,10 +46,6 @@ export class ShopFilterComponent implements OnInit {
     this.applyFilter.emit();
   }
 
-  public handleClearSearch(): void {
-    this.filters.search = '';
-  }
-
   public handleAuthorSearch(value: string): void {
     this.authorService.fetch({ search: value })
       .subscribe((authors: AuthorModel[]) => {

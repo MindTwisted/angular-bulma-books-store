@@ -11,28 +11,13 @@
     </p>
     <ul class="menu-list">
       <li>
-        <div class="field">
-          <label class="label has-text-weight-light"
-                 for="filterTitle"
-          >
-            Title
-          </label>
-          <p class="control has-icons-right">
-            <input class="input"
-                   type="text"
-                   id="filterTitle"
-                   [(ngModel)]="filters.search"
-            >
-            <button class="delete shopFilter__clearField"
-                    *ngIf="filters.search"
-                    (click)="handleClearSearch(); $event.stopImmediatePropagation()"
-            ></button>
-          </p>
-        </div>
+        <app-input [(value)]="filters.search"
+                   componentId="filterTitle"
+                   componentLabel="Title"
+        ></app-input>
       </li>
       <li>
         <app-autocomplete-input #authorsFilter
-                                componentClass="input"
                                 componentId="filterAuthors"
                                 componentLabel="Authors"
                                 (search)="handleAuthorSearch($event)"
@@ -63,9 +48,7 @@
     </ul>
   </aside>
 
-  <button class="shopFilter__triggerButton button is-rounded is-medium"
-          [class.is-dark]="!isFiltersApplied"
-          [class.is-warning]="isFiltersApplied"
+  <button class="shopFilter__triggerButton button is-rounded is-medium is-dark"
           (click)="isActive = !isActive; $event.stopImmediatePropagation()"
   >
     <span class="icon"

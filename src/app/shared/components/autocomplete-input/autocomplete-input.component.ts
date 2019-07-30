@@ -8,7 +8,6 @@ import { SearchResultInterface } from '@app/shared/components/autocomplete-input
 })
 export class AutocompleteInputComponent implements OnInit {
 
-  @Input() public componentClass: string;
   @Input() public componentId: string;
   @Input() public componentLabel = '';
   @Input() public searchResults: SearchResultInterface[];

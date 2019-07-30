@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { AutocompleteInputComponent } from '@app/shared/components/autocomplete-input/autocomplete-input.component';
 import { PageTitleComponent } from '@app/shared/components/page-title/page-title.component';
 import { ClickOutsideDirective } from '@app/shared/directives/click-outside.directive';
+import { InputComponent } from './components/input/input.component';
 
 @NgModule({
   declarations: [
     PageTitleComponent,
     AutocompleteInputComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    InputComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { ClickOutsideDirective } from '@app/shared/directives/click-outside.dire
   exports: [
     PageTitleComponent,
     AutocompleteInputComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    InputComponent
   ]
 })
 export class SharedModule {
