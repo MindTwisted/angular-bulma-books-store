@@ -26,6 +26,15 @@
         ></app-autocomplete-input>
       </li>
       <li>
+        <app-autocomplete-input #genresFilter
+                                componentId="filterGenres"
+                                componentLabel="Genres"
+                                (search)="handleGenreSearch($event)"
+                                (selectResults)="handleGenreSelect($event)"
+                                [searchResults]="searchGenres"
+        ></app-autocomplete-input>
+      </li>
+      <li>
         <div class="field is-grouped shopFilter__controls">
           <button class="button is-primary control has-text-centered"
                   (click)="submitFilters()"

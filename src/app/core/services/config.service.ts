@@ -7,7 +7,8 @@ export class ConfigService {
   public apiUrl = 'http://docker-machine.test:3000/';
   public urls = {
     books: this.apiUrl + 'api/books',
-    authors: this.apiUrl + 'api/authors'
+    authors: this.apiUrl + 'api/authors',
+    genres: this.apiUrl + 'api/genres'
   };
 
   constructor() {
