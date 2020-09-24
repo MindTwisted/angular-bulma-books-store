@@ -22,7 +22,7 @@
     "@angular/router": "~8.1.1",
     "@fortawesome/fontawesome-free": "^5.9.0",
     "bulma": "^0.7.5",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.19",
     "npm-check-updates": "^3.1.18",
     "rxjs": "~6.5.2",
     "tslib": "^1.10.0",
